@@ -162,7 +162,7 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 22
+  AndroidMinSdkVersion: 33
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -797,7 +797,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
+    Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -812,11 +818,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: d815cfa0-cd90-45db-8337-e72b08fb17ea
+  cloudProjectId: e115471e-a25b-4ea4-b60a-cb36ec26fc47
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: LPost
-  organizationId: spica_amedama
+  organizationId: hibiki-0130
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
