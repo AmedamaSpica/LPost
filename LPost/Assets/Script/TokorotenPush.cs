@@ -6,6 +6,7 @@ public class TokorotenPush : MonoBehaviour
 {
 
     [SerializeField] private GameObject tokorotenPrefab;
+    public GameObject[] Cameras;
 
     int a;
     // Start is called before the first frame update
@@ -42,7 +43,11 @@ public class TokorotenPush : MonoBehaviour
             }
             else 
             {
-                Destroy(gameObject);            
+                Destroy(gameObject);
+
+                
+                Cameras[0].gameObject.SetActive(false);
+                Cameras[1].gameObject.SetActive(true);
             }
             
         }
