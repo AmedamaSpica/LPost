@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5640647957188573533}
   m_Layer: 0
   m_Name: tokoroten block
-  m_TagString: Untagged
+  m_TagString: tokoroten
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
