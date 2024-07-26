@@ -101,8 +101,8 @@ public class Mix : MonoBehaviour
                 float rotationAngle = touchDelta.x * rotationSpeed;
 
                 // 画像を回転させる
-                transform.Rotate(Vector3.up, -rotationAngle);
-                pp.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+                transform.Rotate(Vector3.forward, -rotationAngle);
+                pp.transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
             }
 
             // 現在のタッチ位置を前フレームの位置として保存
