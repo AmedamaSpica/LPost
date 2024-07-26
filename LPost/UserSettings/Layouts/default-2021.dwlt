@@ -772,7 +772,7 @@ MonoBehaviour:
     m_Target: 371.79608
     speed: 2
     m_Value: 355.78574
-  m_Ortho:
+    m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
