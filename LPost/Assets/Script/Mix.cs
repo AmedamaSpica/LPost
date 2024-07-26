@@ -19,6 +19,8 @@ public class Mix : MonoBehaviour
 
     private GameObject pp;
     private Vector3 lastMousePosition;
+    private Vector2 lastTouchPosition;
+    private Vector3 imagePosition;
     private RectTransform imageRectTransform;
     private RectTransform RectTransform_get;
 
@@ -27,6 +29,7 @@ public class Mix : MonoBehaviour
     {
         rotationSpeed = 1.0f;
         Separate = true;
+        imagePosition = this.transform.position;
 
         imageRectTransform = GetComponent<RectTransform>();
         inputText = text.text;
@@ -35,7 +38,8 @@ public class Mix : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rotate();
+        MouseRotate();
+        TouchRotate();
 
         if (Separate)
         {
@@ -48,15 +52,15 @@ public class Mix : MonoBehaviour
             TextSeparate();
             pp= Instantiate(PP);
             Separate = false;
+        }
 
-            if (pp.transform.localScale.x > 100.0f)
-            {
-                SceneManager.LoadScene("amedama Scene 1");
-            }
+        if (pp.transform.localScale.x > 10.0f)
+        {
+            SceneManager.LoadScene("amedama Scene 1");
         }
     }
 
-    private void Rotate()
+    private void MouseRotate()
     {
         if (Input.GetMouseButton(0))
         {
@@ -74,7 +78,35 @@ public class Mix : MonoBehaviour
             // 現在のマウス位置を前フレームの位置として保存
             lastMousePosition = currentMousePosition;
 
-            pp.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            pp.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+        }
+    }
+
+    private void TouchRotate()
+    {
+        // タッチされている指の数を取得
+        int touchCount = Input.touchCount;
+
+        // タッチされている指が1本以上の場合
+        if (touchCount > 0)
+        {
+            // 最初のタッチ位置を取得
+            Touch touch = Input.GetTouch(0);
+
+            // タッチの種類が移動で、前フレームとの位置の差分がある場合
+            if (touch.phase == TouchPhase.Moved)
+            {
+                // タッチの差分を計算して回転角度に変換
+                Vector2 touchDelta = touch.position - lastTouchPosition;
+                float rotationAngle = touchDelta.x * rotationSpeed;
+
+                // 画像を回転させる
+                transform.Rotate(Vector3.up, -rotationAngle);
+                pp.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+            }
+
+            // 現在のタッチ位置を前フレームの位置として保存
+            lastTouchPosition = touch.position;
         }
     }
 
