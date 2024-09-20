@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
 
-    [SerializeField]Scene ChangeScene;//ˆÚ“®‚·‚éScene‚ðŒˆ’è
+    [SerializeField]SceneAsset ChangeScene;//ˆÚ“®‚·‚éScene‚ðŒˆ’è
 
 
 
@@ -24,7 +25,7 @@ public class SceneChange : MonoBehaviour
 
     public void SceneChange_func()
     {
-        SceneManager.LoadScene(ChangeScene.ToString());
+        SceneManager.LoadScene(ChangeScene.name.ToString());
     }
 
 }
