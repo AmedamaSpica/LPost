@@ -25,7 +25,7 @@ public class SceneChange : MonoBehaviour
 
     public void SceneChange_func()
     {
-        SceneManager.LoadScene(ChangeScene.ToString());
+        SceneManager.LoadScene(ChangeScene.name.ToString());
     }
 
 }
