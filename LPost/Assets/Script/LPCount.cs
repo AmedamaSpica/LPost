@@ -7,7 +7,8 @@ public class LPCount : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI LPowerCount;
-    int LPower;
+    int charge_LPower;
+    LPPoint LPPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +27,16 @@ public class LPCount : MonoBehaviour
         if (other.tag == "tokoroten")
         {
 
-            LPower++;            
+            charge_LPower++;
+            LPPoint.LPower++;
 
             if (LPowerCount.enabled == false)
             {
                 LPowerCount.enabled = true;
             }
   
-            LPowerCount.text = LPower.ToString();
+            LPowerCount.text = charge_LPower.ToString();
+
         }
     }
 }
