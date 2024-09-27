@@ -5,7 +5,10 @@ using TMPro;
 
 public class InputText : MonoBehaviour
 {
-    TMP_InputField inputField;
+    [SerializeField] private GameObject mix;
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TMP_InputField inputField;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +18,14 @@ public class InputText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKey(KeyCode.Return))
+        {
+            mix.SetActive(true);
+        }
     }
 
-    public void InputName()
+    public void Inputtext()
     {
-        string name = inputField.text;
-        Debug.Log(name);
+        text.text = inputField.text;
     }
 }
