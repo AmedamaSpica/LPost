@@ -797,6 +797,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
+<
       m_Calls:
       - m_Target: {fileID: 1100526992}
         m_TargetAssemblyTypeName: InputDiary, Assembly-CSharp

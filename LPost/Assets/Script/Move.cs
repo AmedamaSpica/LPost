@@ -19,7 +19,7 @@ public class Move : MonoBehaviour
     void Update()
     {
         if (Input.touchCount > 0 || Input.GetMouseButton(0))
-        { // Editor/ƒ}ƒEƒX‘€ì‚Ìê‡‚Í Input.GetMouseButton(0) ‚É‚·‚é
+        { // Editor/ãƒã‚¦ã‚¹æ“ä½œã®å ´åˆã¯ Input.GetMouseButton(0) ã«ã™ã‚‹
 
             var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
