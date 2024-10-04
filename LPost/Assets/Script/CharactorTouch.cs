@@ -2,28 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharactorTouch : MonoBehaviour
 {
 
 
     [SerializeField] private GameObject clickedGameObject;
-    [SerializeField] private Slider LPower;
+    [SerializeField] private Slider LPower_Slider;
+    [SerializeField] private TextMeshProUGUI LPowerCount;
+    [SerializeField] int Slider_TimesOfCount = 20;
+    LPPoint LPPoint;
+    float LPower_minus;
+    float LPower_OneFlame_minus;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        LPower_minus = LPPoint.LPower;
+        LPower_OneFlame_minus = (float)LPPoint.LPower / Slider_TimesOfCount;
+
+        Debug.Log(LPower_OneFlame_minus);
     }
 
     // Update is called once per frame
 
     void OnMouseDrag()
     {
+        if (LPower_Slider.value > 0)
+        {
 
-        
-
-           // clickedGameObject = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = new RaycastHit();
@@ -31,10 +42,14 @@ public class CharactorTouch : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 clickedGameObject = hit.collider.gameObject;
-                LPower.value -= 0.1f;
+                LPower_Slider.value -= LPower_OneFlame_minus;
+
+                LPowerCount.text = ((int)LPower_Slider.value).ToString();
+                LPPoint.LPower = ((int)LPower_Slider.value);
+
             }
 
-            Debug.Log(clickedGameObject);
-       
+        }
     }
 }
+
