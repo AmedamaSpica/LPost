@@ -35,5 +35,6 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene(scene.name.ToString());
         PlayerPrefs.SetInt("LPower", LPPoint.LPower);
+
     }
 }
