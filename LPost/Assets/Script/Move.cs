@@ -18,9 +18,8 @@ public class Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Input.touchCountは画面に何本指が触れているかの判定
         if (Input.touchCount > 0 || Input.GetMouseButton(0))
-        { // Editor/マウス操作の場合は Input.GetMouseButton(0) にする
+        { // Editor/繝槭え繧ｹ謫堺ｽ懊�ｮ蝣ｴ蜷医�ｯ Input.GetMouseButton(0) 縺ｫ縺吶ｋ
 
             var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
