@@ -14,8 +14,8 @@ public class DayTime : MonoBehaviour
     {
         dt = DateTime.Now;
         //コンソールに表示
-        DayText.text = dt.ToString();
-        //PlayerPrefs.SetString("dt", (string)dt);
+        DayText.text = PlayerPrefs.GetString("dt");
+        PlayerPrefs.SetString("dt", dt.ToString("yyyy/MM/dd HH:mm:ss"));
     }
 
     // Update is called once per frame
