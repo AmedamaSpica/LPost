@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
 
-    [SerializeField] SceneAsset ChangeScene;//ˆÚ“®‚·‚éScene‚ğŒˆ’è
+
+    [SerializeField] SceneAsset ChangeScene;//ç§»å‹•ã™ã‚‹Sceneã‚’æ±ºå®š
+
 
 
 

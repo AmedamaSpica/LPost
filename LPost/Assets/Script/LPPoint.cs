@@ -14,7 +14,7 @@ public class LPPoint : MonoBehaviour
     {
         LPower = PlayerPrefs.GetInt("LPower");
         LPowerCount.text = LPower.ToString();
-        
+
     }
 
     // Update is called once per frame

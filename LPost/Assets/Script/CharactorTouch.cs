@@ -43,7 +43,9 @@ public class CharactorTouch : MonoBehaviour
             {
                 clickedGameObject = hit.collider.gameObject;
                 LPower_Slider.value -= LPower_OneFlame_minus;
+
                 
+
                 LPowerCount.text = ((int)LPower_Slider.value).ToString();
                 LPPoint.LPower = ((int)LPower_Slider.value);
 
@@ -52,3 +54,4 @@ public class CharactorTouch : MonoBehaviour
         }
     }
 }
+

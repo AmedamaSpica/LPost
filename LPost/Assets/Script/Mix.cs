@@ -78,7 +78,7 @@ public class Mix : MonoBehaviour
             // 現在のマウス位置を前フレームの位置として保存
             lastMousePosition = currentMousePosition;
 
-            pp.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+            pp.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
         }
     }
 
@@ -112,10 +112,19 @@ public class Mix : MonoBehaviour
 
     private void TextSeparate()
     {
+        int CircleSeparate;
+        int[] TextPosition;
+
+        if (inputText.Length % 2 >= 1)
+        {
+            CircleSeparate = inputText.Length + 1; 
+
+        }
+
         for (int i = 1; i <= inputText.Length; i++)
         {
             // プレハブ生成(この時点では、まだ、空のText)
-            TextMeshProUGUI word = Resources.Load<TextMeshProUGUI>("Word");
+            TextMeshProUGUI word = Resources.Load<TextMeshProUGUI>("Word");//配列にすればいいのでは？？
             TextMeshProUGUI newObj = Instantiate(word,Vector3.zero, Quaternion.identity,inputTextBox.transform);
 
             // 生成された各オブジェクトに文字を1文字ずつ入れる
@@ -130,6 +139,6 @@ public class Mix : MonoBehaviour
             RectTransform_get.position = new Vector2(imageRectTransform.position.x + i, imageRectTransform.position.y);
         }
 
-        inputTextBox.transform.position = new Vector3(-inputText.Length * 0.5f, 0.0f, 0.0f);
+        inputTextBox.transform.position = new Vector3(375, 210, 0.0f);
     }
 }
