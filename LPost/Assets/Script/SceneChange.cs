@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
 
+
     [SerializeField] SceneAsset ChangeScene;//移動するSceneを決定
+
 
 
 
@@ -35,5 +37,6 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene(scene.name.ToString());
         PlayerPrefs.SetInt("LPower", LPPoint.LPower);
+
     }
 }
