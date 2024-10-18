@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/amedama Scene 1.unity
     guid: 1accfbd9dce706847a87c14d40c236c9
+  - enabled: 1
+    path: Assets/Scenes/amedama popopo.unity
+    guid: e7381acdc6fef834eb2b3251ed50ebf5
   m_configObjects: {}
