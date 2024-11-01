@@ -12,7 +12,8 @@ public class LPPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LPower = PlayerPrefs.GetInt("LPower");
+        PlayerPrefs.DeleteKey("LPower");
+        LPower = PlayerPrefs.GetInt("LPower",300);
         LPowerCount.text = LPower.ToString();
 
     }

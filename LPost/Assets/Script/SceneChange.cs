@@ -32,7 +32,11 @@ public class SceneChange : MonoBehaviour
     {
         if (ChangeScene != null)
         {
+
+            PlayerPrefs.SetInt("LPower", LPPoint.LPower);
+            PlayerPrefs.Save();
             sceneToLoad = ChangeScene.name;
+            
         }
     }
 #endif
@@ -40,6 +44,8 @@ public class SceneChange : MonoBehaviour
     public void SceneChange_func()
     {
 
+        PlayerPrefs.SetInt("LPower", LPPoint.LPower);
+        PlayerPrefs.Save();
         SceneManager.LoadScene(sceneToLoad);
 
 
