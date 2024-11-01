@@ -35,6 +35,9 @@ public class DayTime : MonoBehaviour
             dt2 = dt + TimeSpan.FromDays(7);
             PlayerPrefs.SetString("dtAfterWeek", dt2.ToString("yyyyMMdd"));
 
+            //‚¢‚Â‚©‚±‚±‚ÉˆêTŠÔ‚É‚Æ‚Á‚½‚â‚Â‚Ìˆ—‚ğ‘‚­
+
+
         }
 
         dtIntAW = int.Parse(PlayerPrefs.GetString("dtAfterWeek"));
