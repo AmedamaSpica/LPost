@@ -3,27 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using Unity.VisualScripting;
 
 public class DayTime : MonoBehaviour
 {
 
-    int dtInt ;
+    int dtIntAW;int dtIntNow;
     DateTime dt;DateTime dt2;
     public TextMeshProUGUI DayText;
     // Start is called before the first frame update
     void Start()
     {
         dt = DateTime.Now;
-        dt += TimeSpan.FromDays(7);
-         
-        PlayerPrefs.SetString("dt", dt.ToString("yyyyMMdd"));
-        //コンソールに表示
+
+        dtIntNow = int.Parse(PlayerPrefs.GetString("dt"));
+
+        if(dtIntNow < int.Parse(dt.ToString("yyyyMMdd")))
+        {
+            PlayerPrefs.SetString("dt", dt.ToString("yyyyMMdd"));
+        }
+
         DayText.text = PlayerPrefs.GetString("dt");
 
-        dtInt = int.Parse(PlayerPrefs.GetString("dt"));
+        
 
-        Debug.Log(dtInt -1);
-        Debug.Log(DateTime.Compare(dt,dt2));
+        
+
+        if (int.Parse(dt.ToString("yyyyMMdd")) >= int.Parse(PlayerPrefs.GetString("dtAfterWeek")))
+        {
+
+            dt2 = dt + TimeSpan.FromDays(7);
+            PlayerPrefs.SetString("dtAfterWeek", dt2.ToString("yyyyMMdd"));
+
+        }
+
+        dtIntAW = int.Parse(PlayerPrefs.GetString("dtAfterWeek"));
+
+        Debug.Log(dtIntAW + " : " + dtIntNow);
+        
+
         
     }
 
