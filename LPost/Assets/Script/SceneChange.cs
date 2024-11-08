@@ -32,7 +32,10 @@ public class SceneChange : MonoBehaviour
     {
         if (ChangeScene != null)
         {
+
+            Debug.Log(LPPoint.LPower);
             sceneToLoad = ChangeScene.name;
+            
         }
     }
 #endif
@@ -40,6 +43,7 @@ public class SceneChange : MonoBehaviour
     public void SceneChange_func()
     {
 
+        Debug.Log(LPPoint.LPower);
         SceneManager.LoadScene(sceneToLoad);
 
 

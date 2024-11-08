@@ -7,7 +7,6 @@ public class SliderMAX : MonoBehaviour
 {
 
     [SerializeField] Slider Slider;
-    LPPoint LPPoint;
     // Start is called before the first frame update
     void Start()
     {

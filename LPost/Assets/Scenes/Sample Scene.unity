@@ -283,7 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66541bfba203dac48a145b6dbbeb2fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChangeScene: {fileID: 102900000, guid: a1e7fca5e7ba6fb42a44aadca52247e0, type: 3}
+  sceneToLoad: Diary
+  ChangeScene: {fileID: 102900000, guid: 0986df907099229498134462427c9840, type: 3}
 --- !u!1 &437083444
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +502,7 @@ GameObject:
   - component: {fileID: 526945476}
   - component: {fileID: 526945475}
   - component: {fileID: 526945474}
+  - component: {fileID: 526945478}
   m_Layer: 5
   m_Name: Diary Button
   m_TagString: Untagged
@@ -536,7 +538,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526945472}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bc25475b50936c4b884841557979722, type: 3}
   m_Name: 
@@ -585,9 +587,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 526945474}
-        m_TargetAssemblyTypeName: GameEnd, Assembly-CSharp
-        m_MethodName: OnApplicationQuit
+      - m_Target: {fileID: 526945478}
+        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+        m_MethodName: SceneChange_func
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -635,6 +637,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526945472}
   m_CullTransparentMesh: 1
+--- !u!114 &526945478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526945472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66541bfba203dac48a145b6dbbeb2fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: amedama Scene 1
+  ChangeScene: {fileID: 102900000, guid: 1accfbd9dce706847a87c14d40c236c9, type: 3}
 --- !u!1 &667711131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7609145667655734672, guid: 56012dcb32cfc444487b626fb4fb0d27, type: 3}
@@ -1717,6 +1733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66541bfba203dac48a145b6dbbeb2fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: amedama popopo
   ChangeScene: {fileID: 102900000, guid: e7381acdc6fef834eb2b3251ed50ebf5, type: 3}
 --- !u!1 &1778652800
 GameObject:
@@ -1973,6 +1990,50 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2540817853737639666, guid: 56012dcb32cfc444487b626fb4fb0d27, type: 3}
+--- !u!1 &1893632628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893632630}
+  - component: {fileID: 1893632629}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1893632629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893632628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73dc4e66ec64fb04db813f1c607b0873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1893632630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893632628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 540, y: 627, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1990096973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7235015103121818086, guid: 56012dcb32cfc444487b626fb4fb0d27, type: 3}

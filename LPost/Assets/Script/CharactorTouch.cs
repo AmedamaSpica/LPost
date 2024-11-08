@@ -12,7 +12,7 @@ public class CharactorTouch : MonoBehaviour
     [SerializeField] private Slider LPower_Slider;
     [SerializeField] private TextMeshProUGUI LPowerCount;
     [SerializeField] int Slider_TimesOfCount = 20;
-    LPPoint LPPoint;
+    
     float LPower_minus;
     float LPower_OneFlame_minus;
 
@@ -25,7 +25,7 @@ public class CharactorTouch : MonoBehaviour
         LPower_minus = LPPoint.LPower;
         LPower_OneFlame_minus = (float)LPPoint.LPower / Slider_TimesOfCount;
 
-        Debug.Log(LPower_OneFlame_minus);
+       
     }
 
     // Update is called once per frame
