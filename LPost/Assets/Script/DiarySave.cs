@@ -5,18 +5,20 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 
+
+[Serializable]
+public class Diary
+{
+    public string dt_string;
+    public string diary_text;
+
+}
+
+
 public class DiarySave : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI text;
-
-    [Serializable]
-    public class Diary
-    {
-        public string dt_string;
-        public string diary_text;
-        
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +41,11 @@ public class DiarySave : MonoBehaviour
         diary.dt_string = DateTime.Now.ToString("yyyy/MM/dd");
         diary.diary_text = text.text;
 
-        string jsonstr = JsonUtility.ToJson(diary);
+        string jsonstr = JsonUtility.ToJson(diary) + "\n";
 
         Debug.Log(jsonstr);
 
-        writer = new StreamWriter(Application.dataPath + "/savedata.json", false);
+        writer = new StreamWriter(Application.dataPath + "/savedata.json", true);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
         writer.Write(jsonstr);
         writer.Flush();
         writer.Close();
