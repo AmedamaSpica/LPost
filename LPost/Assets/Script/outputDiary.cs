@@ -10,6 +10,8 @@ public class outputDiary : MonoBehaviour
 
     [SerializeField]private TextMeshProUGUI text;
 
+    private string[] splitText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,11 +35,20 @@ public class outputDiary : MonoBehaviour
             reader = new StreamReader(Application.dataPath + "/savedata.json");
             string data = reader.ReadToEnd();
 
-            Debug.Log(data);
+            
 
             reader.Close();
-            diary = JsonUtility.FromJson<Diary>(data);
 
+            splitText = data.Split(char.Parse("\n"));
+
+            foreach (string line in splitText)
+            {
+                if (line.Length > 0)
+                {
+                    diary = JsonUtility.FromJson<Diary>(line);
+                    Debug.Log(diary.diary_text);
+                }
+            }
         }
 
         text.text = diary.diary_text;
