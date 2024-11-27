@@ -10,29 +10,16 @@ using Unity.VisualScripting;
 public class outputDiary : MonoBehaviour
 {
 
-    [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private ScrollView scrollView;
 
     private string[] splitText;
     List<string> splitList = new List<string>();
-    private int[] CountDiaryDays = new int[2];
+    [HideInInspector] public int[] CountDiaryDays;
+    [HideInInspector] public Diary[] Public_Diary;
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-       
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void wewei()
     {
 
         Diary diary = new Diary();
@@ -43,64 +30,75 @@ public class outputDiary : MonoBehaviour
             reader = new StreamReader(Application.dataPath + "/savedata.json");
             string diaryDay = "0";
             string data = reader.ReadToEnd();
-            int i = -1;
+
 
             reader.Close();
 
             splitText = data.Split(char.Parse("\n"));
 
+            Public_Diary = new Diary[splitText.Length];
+
+            int DayCount = 0;
+
+            int i = 0;
+
             foreach (string line in splitText)
             {
-
-                
                 if (line.Length > 0)
                 {
 
                     diary = JsonUtility.FromJson<Diary>(line);
-                    
+                    Public_Diary[i] = diary;
+
+                    Debug.Log(Public_Diary[i].dt_string);
+
                     if (diaryDay != diary.dt_string)
                     {
-                        
-                        diaryDay = diary.dt_string;                        
-                        Debug.Log(diaryDay);
+
+                        diaryDay = diary.dt_string;
+                        DayCount++;
+                        Debug.Log(DayCount);
+
                         splitList.Add(diaryDay);
 
-                        i++;
-                        
                     }
-                    
-                    CountDiaryDays[i] += 1;
-                    Debug.Log(CountDiaryDays[i]);
+
+                    i++;
+                }
+            }
+
+            CountDiaryDays = new int[DayCount];
+
+            int j = -1;
+            foreach (string line in splitText)
+            {
+                if (line.Length > 0)
+                {
+
+                    diary = JsonUtility.FromJson<Diary>(line);
+
+                    if (diaryDay != diary.dt_string)
+                    {
+                        diaryDay = diary.dt_string;
+                        j++;
+                    }
+
+                    CountDiaryDays[j] += 1;
                 }
             }
         }
 
-        text.text = diary.diary_text;
-
         dropdown.ClearOptions();
         dropdown.AddOptions(splitList);
-    
+
     }
 
-    public void ChangeScrollViewFromDropdown()
+    // Update is called once per frame
+    void Update()
     {
 
-        switch (dropdown.value)
-        {
-
-            case 0:
-
-                Debug.Log(CountDiaryDays[0]);
-
-                break;
-
-            case 1:
-                Debug.Log(CountDiaryDays[1]);
-                break;
-
-        }
     }
 
-    
-    
+
+
 }
