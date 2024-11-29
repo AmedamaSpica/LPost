@@ -40,7 +40,7 @@ public class TokorotenPush : MonoBehaviour
                
                 transform.localScale += new Vector3(0, 1, 0) * -0.1f;
 
-                GameObject tokorotenBlock = Instantiate(tokorotenPrefab, transform.position + Vector3.down * 1 + new Vector3(-1,0,-1) * Random.Range(-2.0f, 2.0f), Quaternion.identity);
+                GameObject tokorotenBlock = Instantiate(tokorotenPrefab, transform.position + Vector3.down * 1 + new Vector3(-1,0,-1) * Random.Range(-3.0f, 3.0f), Quaternion.identity);
             }
             else 
             {
