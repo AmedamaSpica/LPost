@@ -649,8 +649,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66541bfba203dac48a145b6dbbeb2fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   sceneToLoad: write Test
   ChangeScene: {fileID: 102900000, guid: 0497c8429c52e0343ba44888d5afe2fc, type: 3}
+
 --- !u!1 &667711131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7609145667655734672, guid: 56012dcb32cfc444487b626fb4fb0d27, type: 3}
