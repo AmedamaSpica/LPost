@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.IO;
+using System.Text;
 
 
 [Serializable]
@@ -48,7 +49,28 @@ public class DiarySave : MonoBehaviour
 
             Debug.Log(jsonstr);
 
-            writer = new StreamWriter(Application.dataPath + "/savedata.json", true);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
+            /*
+#if UNITY_ANDROID
+
+            if (Directory.Exists(Application.persistentDataPath + "/Directory_path"))
+            {
+                Debug.Log(1);
+            }
+            else
+            {
+                Directory.CreateDirectory(Application.persistentDataPath + "/Directory_path");
+                Debug.Log(0);
+            }
+
+#endif
+
+            */
+
+#if UNITY_EDITOR
+            writer = new StreamWriter(Application.dataPath +"savedata.json", true);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
+//#elif UNITY_ANDROID
+//writer = new StreamWriter(Application.persistentDataPath + "/Directory_path/savedata.json", true, Encoding.GetEncoding("utf-8"));
+#endif
             writer.Write(jsonstr);
             writer.Flush();
             writer.Close();

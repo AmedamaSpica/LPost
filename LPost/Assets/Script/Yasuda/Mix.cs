@@ -28,7 +28,7 @@ public class Mix : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MouseRotate();
         TouchRotate();

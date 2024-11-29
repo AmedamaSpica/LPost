@@ -20,7 +20,7 @@ public class GameEnd : MonoBehaviour
      public void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("LPower", LPPoint.LPower);
-        Debug.Log(LPPoint.LPower);
+        //Debug.Log(LPPoint.LPower);
         PlayerPrefs.Save();
         Application.Quit();
     }

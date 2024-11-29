@@ -35,14 +35,13 @@ public class CharactorTouch : MonoBehaviour
         if (LPower_Slider.value > 0)
         {
 
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = new RaycastHit();
 
             if (Physics.Raycast(ray, out hit))
             {
                 clickedGameObject = hit.collider.gameObject;
-                LPower_Slider.value -= LPower_OneFlame_minus;
+                LPower_Slider.value -= LPower_OneFlame_minus * Time.deltaTime * 500;
 
                 
 
