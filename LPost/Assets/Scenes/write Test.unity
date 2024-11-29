@@ -1017,6 +1017,7 @@ GameObject:
   - component: {fileID: 780651122}
   - component: {fileID: 780651121}
   - component: {fileID: 780651124}
+  - component: {fileID: 780651125}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1089,9 +1090,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 780651125}
+        m_TargetAssemblyTypeName: DiarySave, Assembly-CSharp
+        m_MethodName: wei
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 780651124}
         m_TargetAssemblyTypeName: outputDiary, Assembly-CSharp
-        m_MethodName: wewei
+        m_MethodName: wewewi
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1152,9 +1165,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 1760360658}
-  dayDropdown: {fileID: 0}
+  dayDropdown: {fileID: 1760360661}
   CountDiaryDays: 0000000000000000
   Public_Diary: []
+--- !u!114 &780651125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780651119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b27d9ba0672e04a8bb8eb7cfc8cb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 506182622}
 --- !u!1 &797711645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2047,19 +2073,7 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1437927070}
-        m_TargetAssemblyTypeName: DiarySave, Assembly-CSharp
-        m_MethodName: wei
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -2141,7 +2155,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437927065}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23b27d9ba0672e04a8bb8eb7cfc8cb6c, type: 3}
   m_Name: 

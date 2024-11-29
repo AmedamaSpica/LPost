@@ -18,10 +18,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Diary.unity
     guid: 0986df907099229498134462427c9840
   - enabled: 1
-    path: Assets/Scenes/Mix.unity
-    guid: 38d8cd31dc9a6514bb37f15fdec404ea
-  - enabled: 1
-    path: Assets/Scenes/amedama Scene 1.unity
-    guid: 1accfbd9dce706847a87c14d40c236c9
-  m_configObjects:
-    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: bf461945495396f44890c8d374bd0051, type: 2}
+
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  m_configObjects: {}
+
