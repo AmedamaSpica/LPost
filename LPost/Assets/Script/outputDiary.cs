@@ -4,25 +4,22 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class outputDiary : MonoBehaviour
 {
 
-    [SerializeField]private TextMeshProUGUI text;
+    [SerializeField] private TMP_Dropdown dropdown;
+    [SerializeField] private ScrollView scrollView;
+
+    private string[] splitText;
+    List<string> splitList = new List<string>();
+    [HideInInspector] public int[] CountDiaryDays;
+    [HideInInspector] public Diary[] Public_Diary;
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void wewei()
     {
 
         Diary diary = new Diary();
@@ -31,15 +28,77 @@ public class outputDiary : MonoBehaviour
         {
             StreamReader reader;
             reader = new StreamReader(Application.dataPath + "/savedata.json");
+            string diaryDay = "0";
             string data = reader.ReadToEnd();
 
-            Debug.Log(data);
 
             reader.Close();
-            diary = JsonUtility.FromJson<Diary>(data);
 
+            splitText = data.Split(char.Parse("\n"));
+
+            Public_Diary = new Diary[splitText.Length];
+
+            int DayCount = 0;
+
+            int i = 0;
+
+            foreach (string line in splitText)
+            {
+                if (line.Length > 0)
+                {
+
+                    diary = JsonUtility.FromJson<Diary>(line);
+                    Public_Diary[i] = diary;
+
+                    Debug.Log(Public_Diary[i].dt_string);
+
+                    if (diaryDay != diary.dt_string)
+                    {
+
+                        diaryDay = diary.dt_string;
+                        DayCount++;
+                        Debug.Log(DayCount);
+
+                        splitList.Add(diaryDay);
+
+                    }
+
+                    i++;
+                }
+            }
+
+            CountDiaryDays = new int[DayCount];
+
+            int j = -1;
+            foreach (string line in splitText)
+            {
+                if (line.Length > 0)
+                {
+
+                    diary = JsonUtility.FromJson<Diary>(line);
+
+                    if (diaryDay != diary.dt_string)
+                    {
+                        diaryDay = diary.dt_string;
+                        j++;
+                    }
+
+                    CountDiaryDays[j] += 1;
+                }
+            }
         }
 
-        text.text = diary.diary_text;
+        dropdown.ClearOptions();
+        dropdown.AddOptions(splitList);
+
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+
+
 }
