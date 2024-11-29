@@ -649,8 +649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66541bfba203dac48a145b6dbbeb2fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: amedama Scene 1
-  ChangeScene: {fileID: 102900000, guid: 1accfbd9dce706847a87c14d40c236c9, type: 3}
+  sceneToLoad: Diary
+  ChangeScene: {fileID: 102900000, guid: 0986df907099229498134462427c9840, type: 3}
 --- !u!1 &667711131 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7609145667655734672, guid: 56012dcb32cfc444487b626fb4fb0d27, type: 3}

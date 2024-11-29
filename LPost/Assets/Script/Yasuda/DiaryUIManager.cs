@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class DiaryUIManager : MonoBehaviour
 {
-    [Header("0...ラベルを選んでね")]
-    [SerializeField] private GameObject[] texts;
+    //0...Ex
+    //1...日記
+    [SerializeField] private TextMeshProUGUI[] texts;
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject inputField;
     [SerializeField] private Image[] images;
@@ -16,7 +18,7 @@ public class DiaryUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI diaryText;
     //[SerializeField] private GameObject canvas;
 
-    private InputField inputText;
+    private TMP_InputField inputText;
     private int returnTimes;
     private int labelNumber;
     private bool firstText;
@@ -36,13 +38,9 @@ public class DiaryUIManager : MonoBehaviour
         SetButton();
         SetImage();
 
-        if(selectLabel)
+        if(writeDone)
         {
-            inputField.SetActive(true);
-        }
-        else
-        {
-            inputField.SetActive(false);
+            SceneManager.LoadScene("Mix");
         }
     }
 
@@ -53,18 +51,23 @@ public class DiaryUIManager : MonoBehaviour
         selectLabel= false;
         firstText = false;
         writeDone = false;
-        inputText = inputField.GetComponent<InputField>();
+        inputText = inputField.GetComponent<TMP_InputField>();
     }
 
     private void SetText()
     {
         if (firstText)
         {
-            texts[0].SetActive(false);
+            texts[0].text = "";
         }
         else
         {
-            texts[0].SetActive(true);
+            texts[0].text = "ラベルを選んでね！";
+        }
+
+        if(writeDone)
+        {
+            texts[0].text = "楽しそうだね！";
         }
     }
 
@@ -72,19 +75,30 @@ public class DiaryUIManager : MonoBehaviour
     {
         if (selectLabel)
         {
-            for (int i = 1; i < 6; i++)
+            for (int i = 2; i < 6; i++)
             {
                 buttons[i].SetActive(false);
             }
             buttons[0].SetActive(true);
+
+            inputField.SetActive(true);
+            texts[1].enabled = true;
         }
         else
         {
-            for (int i = 1; i < 6; i++)
+            for (int i = 2; i < 6; i++)
             {
                 buttons[i].SetActive(true);
             }
             buttons[0].SetActive(false);
+
+            inputField.SetActive(false);
+            texts[1].enabled = false;
+        }
+
+        if(writeDone)
+        {
+
         }
     }
 
@@ -96,6 +110,11 @@ public class DiaryUIManager : MonoBehaviour
             images[0].sprite = sprites[labelNumber];
         }
         else
+        {
+            images[0].enabled = false;
+        }
+
+        if(writeDone)
         {
             images[0].enabled = false;
         }
@@ -128,15 +147,24 @@ public class DiaryUIManager : MonoBehaviour
     }
     public void Decision()
     {
-
-        selectLabel = true;
+        if (!selectLabel)
+        {
+            selectLabel = true;
+        }
+        else
+        {
+            if (diaryText.text.Length > 0)
+            {
+                writeDone = true;
+            }
+        }
     }
 
     public void InputText()
     {
         if (selectLabel)
         {
-            if (inputText != null)
+            if (inputText.text.Length < 77)
             {
                 diaryText.text = inputText.text;
             }
