@@ -12,6 +12,7 @@ public class outputDiary : MonoBehaviour
 
     [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private ScrollView scrollView;
+    [SerializeField] private DayDropdown dayDropdown = new DayDropdown();
 
     private string[] splitText;
     List<string> splitList = new List<string>();
@@ -90,6 +91,9 @@ public class outputDiary : MonoBehaviour
 
         dropdown.ClearOptions();
         dropdown.AddOptions(splitList);
+
+        
+        dayDropdown.ChangeScrollViewFromDropdown();
 
     }
 
