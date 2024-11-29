@@ -18,8 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Diary.unity
     guid: 0986df907099229498134462427c9840
   - enabled: 1
-
-    path: Assets/Scenes/write Test.unity
-    guid: 0497c8429c52e0343ba44888d5afe2fc
-
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

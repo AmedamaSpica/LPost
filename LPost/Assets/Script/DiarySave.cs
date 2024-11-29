@@ -23,7 +23,7 @@ public class DiarySave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        text.text = String.Empty;
     }
 
     // Update is called once per frame
@@ -38,17 +38,22 @@ public class DiarySave : MonoBehaviour
         Diary diary = new Diary();
         StreamWriter writer;
 
-        diary.dt_string = DateTime.Now.ToString("yyyy/MM/dd");
-        diary.diary_text = text.text;
+        if ((int)text.text[0] != 8203)
+        {
 
-        string jsonstr = JsonUtility.ToJson(diary) + "\n";
+            diary.dt_string = DateTime.Now.ToString("yyyy/MM/dd");
+            diary.diary_text = text.text;
 
-        Debug.Log(jsonstr);
+            string jsonstr = JsonUtility.ToJson(diary) + "\n";
 
-        writer = new StreamWriter(Application.dataPath + "/savedata.json", true);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
-        writer.Write(jsonstr);
-        writer.Flush();
-        writer.Close();
+            Debug.Log(jsonstr);
+
+            writer = new StreamWriter(Application.dataPath + "/savedata.json", true);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
+            writer.Write(jsonstr);
+            writer.Flush();
+            writer.Close();
+
+        }
     }
 
     

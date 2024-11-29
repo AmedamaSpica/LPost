@@ -23,6 +23,19 @@ public class outputDiary : MonoBehaviour
     void Start()
     {
 
+        wewewi();
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void wewewi()
+    {
+
         Diary diary = new Diary();
 
         if (File.Exists(Application.dataPath + "/savedata.json"))
@@ -51,14 +64,11 @@ public class outputDiary : MonoBehaviour
                     diary = JsonUtility.FromJson<Diary>(line);
                     Public_Diary[i] = diary;
 
-                    Debug.Log(Public_Diary[i].dt_string);
-
                     if (diaryDay != diary.dt_string)
                     {
 
                         diaryDay = diary.dt_string;
                         DayCount++;
-                        Debug.Log(DayCount);
 
                         splitList.Add(diaryDay);
 
@@ -92,14 +102,10 @@ public class outputDiary : MonoBehaviour
         dropdown.ClearOptions();
         dropdown.AddOptions(splitList);
 
-        
+
         dayDropdown.ChangeScrollViewFromDropdown();
 
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
