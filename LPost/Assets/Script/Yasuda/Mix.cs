@@ -18,6 +18,7 @@ public class Mix : MonoBehaviour
     private Vector3 imagePosition;
     private RectTransform imageRectTransform;
     private RectTransform RectTransform_get;
+    private float change;
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,14 @@ public class Mix : MonoBehaviour
         if(ableMix)
         {
             Debug.Log("Mix");
-            MixText();
-            SetText();
+            //MixText();
+            //SetText();
+        }
+
+        if (change > 8.0f)
+        {
+            Debug.Log(change);
+            SceneManager.LoadScene("amedama Scene 1");
         }
     }
 
@@ -53,6 +60,8 @@ public class Mix : MonoBehaviour
         imagePosition = this.transform.position;
 
         imageRectTransform = GetComponent<RectTransform>();
+
+        change = 0.0f;
     }
 
     private void MouseRotate()
@@ -127,6 +136,8 @@ public class Mix : MonoBehaviour
                         }
                     }
                 }
+
+                change += 0.01f;
             }
             else
             {
@@ -149,22 +160,84 @@ public class Mix : MonoBehaviour
         if (touchCount > 0)
         {
             // 最初のタッチ位置を取得
-            Touch touch = Input.GetTouch(0);
+            //Touch touch = Input.GetTouch(0);
+            Vector2 nowPos = Input.GetTouch(0).position;
+            Vector2 difference = nowPos - lastTouchPosition;
 
-            // タッチの種類が移動で、前フレームとの位置の差分がある場合
-            if (touch.phase == TouchPhase.Moved)
+            //今と昔の差を＋に
+            if (difference.x < 0)
             {
-                // タッチの差分を計算して回転角度に変換
-                Vector2 touchDelta = touch.position - lastTouchPosition;
-                float rotationAngle = touchDelta.x * rotationSpeed;
+                difference.x = -difference.x;
+            }
+            if (difference.y < 0)
+            {
+                difference.y = -difference.y;
+            }
 
-                // 画像を回転させる
-                transform.Rotate(Vector3.forward, -rotationAngle);
-                //pp.transform.localScale += new Vector3(0.05f, 0.05f, 0.05f);
+            //円を四分割して移動量でどっちに回してるか判断した
+            if (difference.x > 3 || difference.y > 3)
+            {
+                ableMix = true;
+                if (difference.x > difference.y)
+                {
+                    if (nowPos.y > 1103 && nowPos.y < 1583)
+                    {
+                        if (lastTouchPosition.x > nowPos.x)
+                        {
+                            transform.Rotate(Vector3.forward, 1.0f);
+                        }
+                        else
+                        {
+                            transform.Rotate(Vector3.forward, -1.0f);
+                        }
+                    }
+                    else if (nowPos.y > 614 && nowPos.y <= 1103)
+                    {
+                        if (lastTouchPosition.x > nowPos.x)
+                        {
+                            transform.Rotate(Vector3.forward, -1.0f);
+                        }
+                        else
+                        {
+                            transform.Rotate(Vector3.forward, 1.0f);
+                        }
+                    }
+                }
+                else
+                {
+                    if (nowPos.x > 527 && nowPos.x < 1010)
+                    {
+                        if (lastTouchPosition.y > nowPos.y)
+                        {
+                            transform.Rotate(Vector3.forward, -1.0f);
+                        }
+                        else
+                        {
+                            transform.Rotate(Vector3.forward, 1.0f);
+                        }
+                    }
+                    else if (nowPos.x > 34 && nowPos.x <= 527)
+                    {
+                        if (lastTouchPosition.y > nowPos.y)
+                        {
+                            transform.Rotate(Vector3.forward, 1.0f);
+                        }
+                        else
+                        {
+                            transform.Rotate(Vector3.forward, -1.0f);
+                        }
+                    }
+                }
+
+                change += 0.01f;
+            }
+            else
+            {
+                ableMix = false;
             }
 
             // 現在のタッチ位置を前フレームの位置として保存
-            lastTouchPosition = touch.position;
+            lastTouchPosition = nowPos;
         }
     }
 
@@ -211,7 +284,7 @@ public class Mix : MonoBehaviour
             newObj.fontSize = 200 - ((100 / inputText.Length) * i);
             RectTransform_get = newObj.GetComponent<RectTransform>();
             RectTransform_get.anchoredPosition = new Vector2((radius[i] * Mathf.Cos(angle[i])) - 70.0f, (radius[i] * Mathf.Sin(angle[i])) + 15.0f);
-            mixText[i] = newObj;
+            //mixText[i] = newObj;
         }
     }
 
