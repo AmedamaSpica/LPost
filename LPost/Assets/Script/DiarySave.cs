@@ -49,27 +49,27 @@ public class DiarySave : MonoBehaviour
 
             Debug.Log(jsonstr);
 
-            /*
+
 #if UNITY_ANDROID
 
-            if (Directory.Exists(Application.persistentDataPath + "/Directory_path"))
+            if (Directory.Exists(Path.Combine(Application.persistentDataPath, "Directory_path")))
             {
-                Debug.Log(1);
+               
             }
             else
             {
-                Directory.CreateDirectory(Application.persistentDataPath + "/Directory_path");
-                Debug.Log(0);
+                Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "Directory_path"));
             }
 
 #endif
 
-            */
+            
 
 #if UNITY_EDITOR
-            writer = new StreamWriter(Application.dataPath +"savedata.json", true);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
-//#elif UNITY_ANDROID
-//writer = new StreamWriter(Application.persistentDataPath + "/Directory_path/savedata.json", true, Encoding.GetEncoding("utf-8"));
+            writer = new StreamWriter(Application.persistentDataPath +"savedata.json", true);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
+#elif UNITY_ANDROID
+writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/savedata.json") , true, Encoding.GetEncoding("utf-8"));
+ Debug.Log(Path.Combine(Application.persistentDataPath, "Directory_path/savedata.json"));
 #endif
             writer.Write(jsonstr);
             writer.Flush();

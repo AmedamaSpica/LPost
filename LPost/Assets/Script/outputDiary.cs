@@ -40,18 +40,19 @@ public class outputDiary : MonoBehaviour
         Diary diary = new Diary();
 
 #if UNITY_EDITOR
-        if (File.Exists(Application.dataPath + "savedata.json"))
+        if (File.Exists(Application.persistentDataPath + "savedata.json"))
         {
-//#elif UNITY_ANDROID
-  //          if (File.Exists(Application.dataPath +"/Directory_path/savedata.json")){
-        
+#elif UNITY_ANDROID
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "Directory_path/savedata.json"))){
+
 #endif
             StreamReader reader;
 
 #if UNITY_EDITOR
-            reader = new StreamReader(Application.dataPath + "savedata.json");
-//#elif UNITY_ANDROID
-  //          reader = new StreamReader(Application.persistentDataPath + "/Directory_path/savedata.json", Encoding.GetEncoding("utf-8"));
+            reader = new StreamReader(Application.persistentDataPath + "savedata.json");
+
+#elif UNITY_ANDROID
+            reader = new StreamReader(Path.Combine(Application.persistentDataPath, "Directory_path/savedata.json"), Encoding.GetEncoding("utf-8"));
 #endif
 
             string diaryDay = "0";
@@ -92,7 +93,9 @@ public class outputDiary : MonoBehaviour
 
             CountDiaryDays = new int[DayCount];
 
+            diaryDay = "0"; 
             int j = -1;
+
             foreach (string line in splitText)
             {
                 if (line.Length > 0)
@@ -104,6 +107,7 @@ public class outputDiary : MonoBehaviour
                     {
                         diaryDay = diary.dt_string;
                         j++;
+                        
                     }
 
                     CountDiaryDays[j] += 1;
