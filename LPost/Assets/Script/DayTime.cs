@@ -5,6 +5,7 @@ using System;
 using TMPro;
 using Unity.VisualScripting;
 using System.IO;
+using System.Text;
 
 public class DayTime : MonoBehaviour
 {
