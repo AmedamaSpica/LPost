@@ -66,7 +66,7 @@ public class DiarySave : MonoBehaviour
             
 
 #if UNITY_EDITOR
-            writer = new StreamWriter(Application.persistentDataPath +"savedata.json", true);//LPost/Assets/savedata //true‚Å’Ç‰Á‘‚«‚İ
+            writer = new StreamWriter(Application.persistentDataPath + "savedata.json" , true);//LPost/Assets/savedata //true‚Å’Ç‰Á‘‚«‚İ
 #elif UNITY_ANDROID
 writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/savedata.json") , true, Encoding.GetEncoding("utf-8"));
  Debug.Log(Path.Combine(Application.persistentDataPath, "Directory_path/savedata.json"));
