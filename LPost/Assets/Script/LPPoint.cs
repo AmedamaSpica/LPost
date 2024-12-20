@@ -8,6 +8,7 @@ public class LPPoint : MonoBehaviour
     [SerializeField] private TextMeshProUGUI LPowerCount;
     LPCount LPCount;
     public static int LPower;
+    public static int LPower_week;
 
     // Start is called before the first frame update
     void Start()

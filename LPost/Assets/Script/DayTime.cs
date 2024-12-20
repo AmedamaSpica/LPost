@@ -29,6 +29,8 @@ public class DayTime : MonoBehaviour
     {
 
         jsonInitialize();
+        jsonDayTime jsonDayTime = new jsonDayTime();
+        jsonDebug();
 
 #if UNITY_EDITOR
         if (File.Exists(Application.persistentDataPath + "Dtdata.json"))
@@ -39,7 +41,7 @@ public class DayTime : MonoBehaviour
         {
 
 #endif
-            jsonDayTime jsonDayTime = new jsonDayTime();
+            
             StreamReader reader;
 
 #if UNITY_EDITOR
@@ -85,8 +87,7 @@ public class DayTime : MonoBehaviour
 #if UNITY_EDITOR
                 writer = new StreamWriter(Application.persistentDataPath + "Dtdata.json", false);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
 #elif UNITY_ANDROID
-writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/Dtdata.json") , true, Encoding.GetEncoding("utf-8"));
- Debug.Log(Path.Combine(Application.persistentDataPath, "Directory_path/savedata.json"));
+writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/Dtdata.json") , false, Encoding.GetEncoding("utf-8"));
 #endif
                 writer.Write(jsonDt);
                 writer.Flush();
@@ -96,25 +97,48 @@ writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Director
 
             DayText.text = jsonDayTime.dt_now;
 
-            jsonDebug();
+            
 
         }
 
 
-        if (int.Parse(dt.ToString("yyyyMMdd")) >= int.Parse(PlayerPrefs.GetString("dtAfterWeek")))
+        if (int.Parse(dt.ToString("yyyyMMdd")) >= int.Parse(jsonDayTime.dt_afterweek))
         {
-
+            
             dt2 = dt + TimeSpan.FromDays(7);
-            PlayerPrefs.SetString("dtAfterWeek", dt2.ToString("yyyyMMdd"));
+            jsonDayTime.dt_afterweek = dt2.ToString("yyyyMMdd");
+            string jsonDtAW = JsonUtility.ToJson(jsonDayTime);
+
+#if UNITY_ANDROID
+
+            if (Directory.Exists(Path.Combine(Application.persistentDataPath, "Directory_path")))
+            {
+
+            }
+            else
+            {
+                Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "Directory_path"));
+            }
+
+#endif
+
+            StreamWriter writer;
+
+#if UNITY_EDITOR
+            writer = new StreamWriter(Application.persistentDataPath + "Dtdata.json", false);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
+#elif UNITY_ANDROID
+writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/Dtdata.json") , false, Encoding.GetEncoding("utf-8"));
+#endif
+            writer.Write(jsonDtAW);
+            writer.Flush();
+            writer.Close();
 
             //Ç¢Ç¬Ç©Ç±Ç±Ç…àÍèTä‘Ç…Ç∆Ç¡ÇΩÇ‚Ç¬ÇÃèàóùÇèëÇ≠
 
 
         }
 
-        dtIntAW = int.Parse(PlayerPrefs.GetString("dtAfterWeek"));
-
-        Debug.Log(dtIntAW + " : " + dtIntNow);
+        Debug.Log(jsonDayTime.dt_afterweek + " : " + jsonDayTime.dt_now);
 
 
 
@@ -135,10 +159,11 @@ writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Director
         if (Directory.Exists(Path.Combine(Application.persistentDataPath, "Directory_path")))
         {
             Debug.Log(Application.persistentDataPath);
+            return;
         }
         else
         {
-            Debug.Log("bbb");
+            Debug.Log("Create Directory");
             Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "Directory_path"));
         }
 
@@ -154,8 +179,7 @@ writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Director
 #if UNITY_EDITOR
         writer = new StreamWriter(Application.persistentDataPath + "Dtdata.json", false);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
 #elif UNITY_ANDROID
-writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/Dtdata.json") , true, Encoding.GetEncoding("utf-8"));
- Debug.Log(Path.Combine(Application.persistentDataPath, "Directory_path/savedata.json"));
+writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/Dtdata.json") , false, Encoding.GetEncoding("utf-8"));
 #endif
         writer.Write(jsonstr);
         writer.Flush();
