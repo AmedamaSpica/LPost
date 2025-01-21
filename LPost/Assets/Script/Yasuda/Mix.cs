@@ -28,7 +28,7 @@ public class Mix : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MouseRotate();
         TouchRotate();
@@ -54,7 +54,7 @@ public class Mix : MonoBehaviour
         diarymanager = DiaryBase.GetComponent<DiaryManager>();
         inputText = diarymanager.DiaryText;
 
-        rotationSpeed = 1.0f;
+        rotationSpeed = 4.0f;
         Separate = true;
         ableMix = false;
         imagePosition = this.transform.position;
@@ -92,22 +92,22 @@ public class Mix : MonoBehaviour
                     {
                         if (lastPos.x > nowPos.x)
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                     }
                     else if (nowPos.y > 614 && nowPos.y <= 1103)
                     {
                         if (lastPos.x > nowPos.x)
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                     }
                 }
@@ -117,27 +117,27 @@ public class Mix : MonoBehaviour
                     {
                         if (lastPos.y > nowPos.y)
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                     }
                     else if (nowPos.x > 34 && nowPos.x <= 527)
                     {
                         if (lastPos.y > nowPos.y)
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                     }
                 }
 
-                change += 0.01f;
+                change += 0.1f;
             }
             else
             {
