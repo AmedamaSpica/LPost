@@ -6,6 +6,8 @@ using TMPro;
 using Unity.VisualScripting;
 using System.IO;
 using System.Text;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class DayTime : MonoBehaviour
 {
@@ -13,6 +15,11 @@ public class DayTime : MonoBehaviour
     int dtIntAW; int dtIntNow;
     DateTime dt; DateTime dt2;
     public TextMeshProUGUI DayText;
+    [SerializeField] private UnityEvent SceneChangeIvent;
+    GameObject GameManager;
+    SaveVariable saveVariable;
+    
+
 
     [Serializable]
     public class jsonDayTime
@@ -27,6 +34,9 @@ public class DayTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager = GameObject.Find("GameManager");
+        saveVariable = GameManager.GetComponent<SaveVariable>();
+         
 
         jsonInitialize();
         jsonDayTime jsonDayTime = new jsonDayTime();
@@ -97,12 +107,10 @@ writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Director
 
             DayText.text = jsonDayTime.dt_now;
 
-            
-
         }
+       
 
-
-        if (int.Parse(dt.ToString("yyyyMMdd")) >= int.Parse(jsonDayTime.dt_afterweek))
+        if (int.Parse(dt.ToString("yyyyMMdd")) >= int.Parse(jsonDayTime.dt_afterweek)|| saveVariable.NumberWeekJudge == 7)
         {
             
             dt2 = dt + TimeSpan.FromDays(7);
@@ -134,13 +142,14 @@ writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Director
             writer.Close();
 
             //Ç¢Ç¬Ç©Ç±Ç±Ç…àÍèTä‘Ç…Ç∆Ç¡ÇΩÇ‚Ç¬ÇÃèàóùÇèëÇ≠
-
+            saveVariable.NumberWeekJudge = 0;
+            WeekJudge();
+            
 
         }
 
         Debug.Log(jsonDayTime.dt_afterweek + " : " + jsonDayTime.dt_now);
-
-
+        Debug.Log(this.gameObject);
 
     }
 
@@ -215,6 +224,14 @@ writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Director
 
         }
 
+    }
+
+    public void WeekJudge()
+    {
+        
+        SceneChangeIvent.Invoke();
+        LPPoint.LPower_week = 0;
+        
     }
 }
 

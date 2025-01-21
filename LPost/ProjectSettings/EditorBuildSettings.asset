@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/amedama Scene 1.unity
     guid: 1accfbd9dce706847a87c14d40c236c9
+  - enabled: 1
+    path: Assets/Scenes/Evolution.unity
+    guid: 8fb6ee0d1921b294b88c02f2bc3968fe
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
