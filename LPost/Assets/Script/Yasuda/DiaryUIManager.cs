@@ -38,6 +38,8 @@ public class DiaryUIManager : MonoBehaviour
         SetButton();
         SetImage();
 
+        Debug.Log(writeDone);
+
         if(writeDone)
         {
             SceneManager.LoadScene("Mix");
@@ -140,16 +142,22 @@ public class DiaryUIManager : MonoBehaviour
         labelNumber = 3;
         firstText = true;
     }
+
     public void Back()
     {
         firstText = false;
         selectLabel = false;
+        buttons[1].SetActive(true);
+        buttons[6].SetActive(false);
     }
+
     public void Decision()
     {
         if (!selectLabel)
         {
             selectLabel = true;
+            buttons[1].SetActive(false);
+            buttons[6].SetActive(true);
         }
         else
         {
