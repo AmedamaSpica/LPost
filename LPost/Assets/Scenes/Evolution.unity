@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - {fileID: 3072455591092915509, guid: 846aec7feda125542bb69121a39ffefd, type: 3}
+  - {fileID: 5597115220953632366, guid: 636fbf613c972de41948ad664a06bc2a, type: 3}
 --- !u!114 &101172773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,7 +1197,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

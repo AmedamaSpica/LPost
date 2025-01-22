@@ -31,6 +31,7 @@ public class ImageFlash : MonoBehaviour
         {
             _image.color = Color.clear;
             image.SetActive(false);
+            CharactorSet.Character_No++;
             CharacterChangeIvent.Invoke();
             CharactorEvoText.text = "おめでとう！キャラクターは進化した！";
         }

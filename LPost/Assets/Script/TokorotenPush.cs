@@ -8,13 +8,16 @@ public class TokorotenPush : MonoBehaviour
 
     [SerializeField] private GameObject tokorotenPrefab;
     [SerializeField] private GameObject MainCamera;
-
+    [SerializeField] private AudioClip Sound;
     [SerializeField] private Animator CameraTransition;
+
+    AudioSource AudioSource;
     
     // Start is called before the first frame update
     void Start()
     {
         CameraTransition = MainCamera.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -41,6 +44,8 @@ public class TokorotenPush : MonoBehaviour
                 transform.localScale += new Vector3(0, 1, 0) * -0.1f;
 
                 GameObject tokorotenBlock = Instantiate(tokorotenPrefab, transform.position + Vector3.down * 1 + new Vector3(-1,0,-1) * Random.Range(-3.0f, 3.0f), Quaternion.identity);
+                
+
             }
             else 
             {

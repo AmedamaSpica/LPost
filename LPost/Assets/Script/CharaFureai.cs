@@ -13,7 +13,7 @@ public class CharaFureai : MonoBehaviour
 
     private string loadText;
     private string[] splitText;
-    private int textNum;
+    private int textNum = 0;
 
     // Start is called before the first frame update
     void Start()
