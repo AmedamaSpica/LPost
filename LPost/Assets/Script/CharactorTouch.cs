@@ -13,6 +13,7 @@ public class CharactorTouch : MonoBehaviour
     [SerializeField] private GameObject clickedGameObject;
     [SerializeField] private Slider LPower_Slider;
     [SerializeField] private TextMeshProUGUI LPowerCount;
+    [SerializeField] private AudioClip Sound;
     [SerializeField] int Slider_TimesOfCount = 20;
 
     GameEnd GameEnd = new GameEnd();
@@ -20,6 +21,7 @@ public class CharactorTouch : MonoBehaviour
     float LPower_OneFlame_minus;
     int LPoint_MAX = 0;
     bool OneCall = true;
+    AudioSource AudioSource;
 
 
 
@@ -28,7 +30,7 @@ public class CharactorTouch : MonoBehaviour
     {
         LPower_minus = LPPoint.LPower;
         LPower_OneFlame_minus = (float)LPPoint.LPower / Slider_TimesOfCount;
-
+        AudioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
        
     }
 
@@ -40,7 +42,8 @@ public class CharactorTouch : MonoBehaviour
         {
             LPoint_MAX = LPPoint.LPower;
             OneCall = false;
-            
+            AudioSource.PlayOneShot(Sound);
+
         }
 
         if (LPower_Slider.value > 0)

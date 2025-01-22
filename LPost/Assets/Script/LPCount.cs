@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class LPCount : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI LPowerCount;
+    [SerializeField] private AudioClip Sound;
     int charge_LPower;
+    AudioSource AudioSource;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        AudioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class LPCount : MonoBehaviour
 
             charge_LPower++;
             LPPoint.LPower++;
+            AudioSource.PlayOneShot(Sound);
 
             if (LPowerCount.enabled == false)
             {

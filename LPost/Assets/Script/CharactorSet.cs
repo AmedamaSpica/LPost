@@ -5,7 +5,8 @@ using UnityEngine;
 public class CharactorSet : MonoBehaviour
 {
     [SerializeField] GameObject[] Characters;
-    int Character_No = 0;
+    GameObject NowCharacter;
+    public static int Character_No = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class CharactorSet : MonoBehaviour
 
     public void CharacterSet_func()
     {
-        Instantiate(Characters[Character_No], Characters[Character_No].transform.position, Characters[Character_No].transform.rotation);
+        Destroy(NowCharacter);
+        NowCharacter = Instantiate(Characters[Character_No], Characters[Character_No].transform.position, Characters[Character_No].transform.rotation);
     }
 }
