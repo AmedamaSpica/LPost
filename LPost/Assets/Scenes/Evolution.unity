@@ -192,21 +192,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  SceneChangeIvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 101172773}
-        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
-        m_MethodName: SceneChange_func
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  CharactorEvoText: {fileID: 827212315}
 --- !u!114 &101172770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u304A\u3084\u2026\u30AD\u30E3\u30E9\u30AF\u30BF\u30FC\u306E\u69D8\u5B50\u304C\u2026\uFF1F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fa330cb07ba3d9d44928e0844591369f, type: 2}
   m_sharedMaterial: {fileID: 977289157980546114, guid: fa330cb07ba3d9d44928e0844591369f, type: 2}
@@ -750,8 +736,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -832,6 +818,7 @@ GameObject:
   - component: {fileID: 841523049}
   - component: {fileID: 841523048}
   - component: {fileID: 841523047}
+  - component: {fileID: 841523050}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -903,7 +890,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 841523048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 841523050}
+        m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
+        m_MethodName: SceneChange_func
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &841523048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,6 +941,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841523045}
   m_CullTransparentMesh: 1
+--- !u!114 &841523050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841523045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66541bfba203dac48a145b6dbbeb2fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Sample Scene
+  ChangeScene: {fileID: 102900000, guid: 173d92d6f4f6e9b4fbcac5bc5016e7a0, type: 3}
 --- !u!1 &848663550
 GameObject:
   m_ObjectHideFlags: 0

@@ -228,10 +228,11 @@ writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Director
 
     public void WeekJudge()
     {
-        
-        SceneChangeIvent.Invoke();
-        LPPoint.LPower_week = 0;
-        
+        if (LPPoint.LPower_week >= 105)
+        {
+            SceneChangeIvent.Invoke();
+            LPPoint.LPower_week = 0;
+        }
     }
 }
 
