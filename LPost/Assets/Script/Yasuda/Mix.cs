@@ -19,6 +19,10 @@ public class Mix : MonoBehaviour
     private RectTransform imageRectTransform;
     private RectTransform RectTransform_get;
     private float change;
+    private float textColor;
+    private bool isText;
+
+    private Color[] mixText;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +49,14 @@ public class Mix : MonoBehaviour
             Debug.Log(change);
             SceneManager.LoadScene("amedama Scene 1");
         }
+
+        if (isText)
+        {
+            for (int i = 0; i < mixText.Length; i++)
+            {
+               //mixText[i].color = new Color(1, 0, 0, textColor);
+            }
+        }
     }
 
     private void Set()
@@ -62,6 +74,8 @@ public class Mix : MonoBehaviour
         imageRectTransform = GetComponent<RectTransform>();
 
         change = 0.0f;
+        textColor = 8.0f;
+        isText = false;
     }
 
     private void MouseRotate()
@@ -96,14 +110,14 @@ public class Mix : MonoBehaviour
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, rotationSpeed);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                     }
                     else if (nowPos.y > 614 && nowPos.y <= 1103)
                     {
                         if (lastPos.x > nowPos.x)
                         {
-                            transform.Rotate(Vector3.forward, rotationSpeed);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                         else
                         {
@@ -117,7 +131,7 @@ public class Mix : MonoBehaviour
                     {
                         if (lastPos.y > nowPos.y)
                         {
-                            transform.Rotate(Vector3.forward, rotationSpeed);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                         else
                         {
@@ -132,12 +146,13 @@ public class Mix : MonoBehaviour
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, rotationSpeed);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                     }
                 }
 
-                change += 0.1f;
+                change += 0.05f;
+                textColor -= change;
             }
             else
             {
@@ -184,22 +199,22 @@ public class Mix : MonoBehaviour
                     {
                         if (lastTouchPosition.x > nowPos.x)
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                     }
                     else if (nowPos.y > 614 && nowPos.y <= 1103)
                     {
                         if (lastTouchPosition.x > nowPos.x)
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                     }
                 }
@@ -209,27 +224,27 @@ public class Mix : MonoBehaviour
                     {
                         if (lastTouchPosition.y > nowPos.y)
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                     }
                     else if (nowPos.x > 34 && nowPos.x <= 527)
                     {
                         if (lastTouchPosition.y > nowPos.y)
                         {
-                            transform.Rotate(Vector3.forward, 1.0f);
+                            transform.Rotate(Vector3.forward, rotationSpeed);
                         }
                         else
                         {
-                            transform.Rotate(Vector3.forward, -1.0f);
+                            transform.Rotate(Vector3.forward, -rotationSpeed);
                         }
                     }
                 }
 
-                change += 0.01f;
+                change += 0.05f;
             }
             else
             {
@@ -241,10 +256,10 @@ public class Mix : MonoBehaviour
         }
     }
 
-    private TextMeshProUGUI[] mixText;
     float changeAngle = 90.0f;
-    float changeRadius = 410.0f;
+    float changeRadius = 300.0f;
 
+    TextMeshProUGUI newObj;
     private void SetText()
     {
         int CircleSeparate;
@@ -254,7 +269,7 @@ public class Mix : MonoBehaviour
         float[] radius = new float[inputText.Length];
 
         addangle = 360.0f / inputText.Length;
-        addradius = 410.0f / inputText.Length;
+        addradius = 300.0f / inputText.Length;
 
         if (inputText.Length % 2 >= 1)
         {
@@ -272,7 +287,7 @@ public class Mix : MonoBehaviour
         {
             // プレハブ生成(この時点では、まだ、空のText)
             TextMeshProUGUI word = Resources.Load<TextMeshProUGUI>("Word");//配列にすればいいのでは？？
-            TextMeshProUGUI newObj = Instantiate(word, Vector3.zero, Quaternion.identity, gameObject.transform);
+            newObj = Instantiate(word, Vector3.zero, Quaternion.identity, gameObject.transform);
 
             // 生成された各オブジェクトに文字を1文字ずつ入れる
             newObj.text = inputText.Substring(i, 1);
@@ -283,8 +298,14 @@ public class Mix : MonoBehaviour
             //テキストを配置
             newObj.fontSize = 200 - ((100 / inputText.Length) * i);
             RectTransform_get = newObj.GetComponent<RectTransform>();
-            RectTransform_get.anchoredPosition = new Vector2((radius[i] * Mathf.Cos(angle[i])) - 70.0f, (radius[i] * Mathf.Sin(angle[i])) + 15.0f);
-            //mixText[i] = newObj;
+            RectTransform_get.anchoredPosition = new Vector2((radius[i] * Mathf.Cos(angle[i])) - 65.0f, (radius[i] * Mathf.Sin(angle[i])) + 10.0f);
+
+            //mixText[i] = newObj.color;
+
+            if (i == inputText.Length - 1)
+            {
+                isText = true;
+            }
         }
     }
 
