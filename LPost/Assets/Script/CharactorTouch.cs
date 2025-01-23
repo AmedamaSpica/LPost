@@ -10,7 +10,7 @@ public class CharactorTouch : MonoBehaviour
 {
 
 
-    [SerializeField] private GameObject clickedGameObject;
+    //[SerializeField] private GameObject clickedGameObject;
     [SerializeField] private Slider LPower_Slider;
     [SerializeField] private TextMeshProUGUI LPowerCount;
     [SerializeField] private AudioClip Sound;
@@ -31,6 +31,8 @@ public class CharactorTouch : MonoBehaviour
         LPower_minus = LPPoint.LPower;
         LPower_OneFlame_minus = (float)LPPoint.LPower / Slider_TimesOfCount;
         AudioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        LPower_Slider = GameObject.Find("PowerSlider").GetComponent<Slider>();
+        LPowerCount = GameObject.Find("PowerText").GetComponent<TextMeshProUGUI>();
        
     }
 
@@ -54,7 +56,7 @@ public class CharactorTouch : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                clickedGameObject = hit.collider.gameObject;
+                //clickedGameObject = hit.collider.gameObject;
                 LPower_Slider.value -= LPower_OneFlame_minus * Time.deltaTime * 500;
 
                 
