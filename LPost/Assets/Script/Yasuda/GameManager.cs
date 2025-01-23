@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
                 reader = new StreamReader(Application.persistentDataPath + "LPdata.json");
 
 #elif UNITY_ANDROID
-                reader = new StreamReader(Path.Combine(Application.persistentDataPath, "Directory_path/LPdata.json"), Encoding.GetEncoding("utf-8"));
+                reader = new StreamReader(Path.Combine(Application.persistentDataPath, "Directory_path/LPdata.json"), System.Text.Encoding.GetEncoding("utf-8"));
 #endif
 
                 string LPData = reader.ReadToEnd();

@@ -88,7 +88,7 @@ public class CharactorTouch : MonoBehaviour
             reader = new StreamReader(Application.persistentDataPath + "LPdata.json");
 
 #elif UNITY_ANDROID
-            reader = new StreamReader(Path.Combine(Application.persistentDataPath, "Directory_path/LPdata.json"), Encoding.GetEncoding("utf-8"));
+            reader = new StreamReader(Path.Combine(Application.persistentDataPath, "Directory_path/LPdata.json"), System.Text.Encoding.GetEncoding("utf-8"));
 #endif
 
             string LPData = reader.ReadToEnd();
@@ -137,7 +137,7 @@ public class CharactorTouch : MonoBehaviour
 #if UNITY_EDITOR
         writer = new StreamWriter(Application.persistentDataPath + "LPdata.json", false);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
 #elif UNITY_ANDROID
-        writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/LPdata.json") , false, Encoding.GetEncoding("utf-8"));
+        writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/LPdata.json") , false, System.Text.Encoding.GetEncoding("utf-8"));
 #endif
 
         return writer;
