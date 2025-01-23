@@ -18,6 +18,8 @@ public class Tokorotenn : MonoBehaviour
         RectTransform_get = this.GetComponent<RectTransform>();
 
         RectTransform_get.anchoredPosition = nowPosition;
+
+        RectTransform_get.anchoredPosition = new Vector2(-313.0f, 431.0f);
     }
 
     // Update is called once per frame
@@ -29,6 +31,16 @@ public class Tokorotenn : MonoBehaviour
         //Vector2 nowPos = Input.GetTouch(0).position;
 
 
-        RectTransform_get.anchoredPosition = new Vector2(nowPosition.x + -313.0f, nowPos.y);
+        RectTransform_get.anchoredPosition = new Vector2(nowPosition.x + -313.0f, nowPos.y - 200.0f);
+
+        if (RectTransform_get.anchoredPosition.y > 700.0f)
+        {
+            RectTransform_get.anchoredPosition = new Vector2(nowPosition.x + -313.0f, 700.0f);
+        }
+
+        if (RectTransform_get.anchoredPosition.y < -80.0f)
+        {
+            RectTransform_get.anchoredPosition = new Vector2(nowPosition.x + -313.0f, -80.0f);
+        }
     }
 }
