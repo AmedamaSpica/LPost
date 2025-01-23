@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8778643425301509849}
   - component: {fileID: 3064033561699919685}
   - component: {fileID: 107818712830881412}
+  - component: {fileID: 5059287855325598972}
   m_Layer: 5
   m_Name: Word
   m_TagString: Untagged
@@ -135,3 +136,16 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5059287855325598972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943043533731963079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9872792c33bd5f749af036c2ef510185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 107818712830881412}
