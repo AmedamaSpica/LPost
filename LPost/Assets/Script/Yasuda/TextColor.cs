@@ -9,7 +9,7 @@ public class TextColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        lastPos=this.
     }
 
     // Update is called once per frame
