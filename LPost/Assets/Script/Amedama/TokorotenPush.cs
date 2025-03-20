@@ -51,7 +51,7 @@ public class TokorotenPush : MonoBehaviour
             {
                 Destroy(gameObject);
 
-                
+                Debug.Log("nu");
                
                 CameraTransition.SetBool("AllPushed", true);
 

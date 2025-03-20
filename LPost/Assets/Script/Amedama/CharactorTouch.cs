@@ -10,7 +10,7 @@ public class CharactorTouch : MonoBehaviour
 {
 
 
-    [SerializeField] private GameObject clickedGameObject;
+    //[SerializeField] private GameObject clickedGameObject;
     [SerializeField] private Slider LPower_Slider;
     [SerializeField] private TextMeshProUGUI LPowerCount;
     [SerializeField] private AudioClip Sound;
@@ -31,6 +31,8 @@ public class CharactorTouch : MonoBehaviour
         LPower_minus = LPPoint.LPower;
         LPower_OneFlame_minus = (float)LPPoint.LPower / Slider_TimesOfCount;
         AudioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
+        LPower_Slider = GameObject.Find("PowerSlider").GetComponent<Slider>();
+        LPowerCount = GameObject.Find("PowerText").GetComponent<TextMeshProUGUI>();
        
     }
 
@@ -54,7 +56,7 @@ public class CharactorTouch : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                clickedGameObject = hit.collider.gameObject;
+                //clickedGameObject = hit.collider.gameObject;
                 LPower_Slider.value -= LPower_OneFlame_minus * Time.deltaTime * 500;
 
                 
@@ -88,7 +90,7 @@ public class CharactorTouch : MonoBehaviour
             reader = new StreamReader(Application.persistentDataPath + "LPdata.json");
 
 #elif UNITY_ANDROID
-            reader = new StreamReader(Path.Combine(Application.persistentDataPath, "Directory_path/LPdata.json"), Encoding.GetEncoding("utf-8"));
+            reader = new StreamReader(Path.Combine(Application.persistentDataPath, "Directory_path/LPdata.json"), System.Text.Encoding.GetEncoding("utf-8"));
 #endif
 
             string LPData = reader.ReadToEnd();
@@ -137,7 +139,7 @@ public class CharactorTouch : MonoBehaviour
 #if UNITY_EDITOR
         writer = new StreamWriter(Application.persistentDataPath + "LPdata.json", false);//LPost/Assets/savedata //trueÇ≈í«â¡èëÇ´çûÇ›
 #elif UNITY_ANDROID
-        writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/LPdata.json") , false, Encoding.GetEncoding("utf-8"));
+        writer = new StreamWriter(Path.Combine(Application.persistentDataPath ,"Directory_path/LPdata.json") , false, System.Text.Encoding.GetEncoding("utf-8"));
 #endif
 
         return writer;
