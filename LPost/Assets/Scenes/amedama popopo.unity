@@ -242,6 +242,7 @@ MonoBehaviour:
   Characters:
   - {fileID: 6258517314368810778, guid: b455d76ae7c70344892e69a0233971ab, type: 3}
   - {fileID: 8389519955919463861, guid: 8638cdc0b259c3e46b6117cabd75d8b9, type: 3}
+  - {fileID: 3053058395725256807, guid: 36337fc1e85cc02499b9e12424022a88, type: 3}
 --- !u!1 &360076741
 GameObject:
   m_ObjectHideFlags: 0
