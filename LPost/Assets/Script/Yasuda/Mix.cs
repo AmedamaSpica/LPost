@@ -9,6 +9,11 @@ using UnityEngine.SceneManagement;
 
 public class Mix : MonoBehaviour
 {
+    [SerializeField] private float addNum = 0.05f;
+    [SerializeField] private float pullNum = 0.007f;
+
+    public float textColor { get; set; }
+
     private string inputText;
     private float rotationSpeed;
     private bool Separate;
@@ -18,9 +23,9 @@ public class Mix : MonoBehaviour
     private Vector3 imagePosition;
     private RectTransform imageRectTransform;
     private RectTransform RectTransform_get;
-    private float change;
-    private float textColor;
+    private float changeScene;
     private bool isText;
+    
 
     private Color[] mixText;
 
@@ -39,24 +44,24 @@ public class Mix : MonoBehaviour
 
         if(ableMix)
         {
-            Debug.Log("Mix");
+            //Debug.Log("Mix");
             //MixText();
             //SetText();
         }
 
-        if (change > 8.0f)
+        if (changeScene > 8.0f)
         {
-            Debug.Log(change);
-            SceneManager.LoadScene("amedama Scene 1");
+            //Debug.Log(changeScene);
+            SceneManager.LoadScene("liquid");
         }
 
-        if (isText)
+        /*if (isText)
         {
             for (int i = 0; i < mixText.Length; i++)
             {
                //mixText[i].color = new Color(1, 0, 0, textColor);
             }
-        }
+        }*/
     }
 
     private void Set()
@@ -73,8 +78,8 @@ public class Mix : MonoBehaviour
 
         imageRectTransform = GetComponent<RectTransform>();
 
-        change = 0.0f;
-        textColor = 8.0f;
+        changeScene = 0.0f;
+        textColor = 1.0f;
         isText = false;
     }
 
@@ -151,8 +156,8 @@ public class Mix : MonoBehaviour
                     }
                 }
 
-                change += 0.05f;
-                textColor -= change;
+                changeScene += addNum;
+                textColor -= pullNum;
             }
             else
             {
@@ -244,7 +249,9 @@ public class Mix : MonoBehaviour
                     }
                 }
 
-                change += 0.05f;
+                changeScene += addNum;
+                textColor -= pullNum;
+
             }
             else
             {

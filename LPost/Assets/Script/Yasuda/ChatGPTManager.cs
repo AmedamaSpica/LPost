@@ -1,10 +1,12 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ChatGPTManager : MonoBehaviour
 {
@@ -17,6 +19,10 @@ public class ChatGPTManager : MonoBehaviour
 
     //ここから点数の獲得をお願いします。
     public int Point { get; set; }
+
+    GameObject diaryUIManager;
+    DiaryUIManager diaryuimanager;
+    private bool finish;
 
     private string aiAnswer;
     private int positivePoint;
@@ -73,7 +79,8 @@ public class ChatGPTManager : MonoBehaviour
         content = ""
     };
 
-    private readonly string apiKey = "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";
+    private readonly string apiKey=APIKeyHolder.API_KEY;
+
     private List<MessageModel> communicationHistory = new();
 
     void Start()
@@ -81,7 +88,7 @@ public class ChatGPTManager : MonoBehaviour
         Set();
         communicationHistory.Add(assistantModel);
 
-        MessageSubmit("あなたは今から数字しか話さないでください。\n" +
+        MessageSubmit("今から数字だけで会話してください。\n" +
             "次回以降送る文章を以下の順番で点数をつけてその値だけ返してください。\n" +
             "一番目、ポジティブな意味のある品詞の数を出してください。\n" +
             "二番目、程度を表す副詞の数を出してそこに1を足してください。\n" +
@@ -90,6 +97,7 @@ public class ChatGPTManager : MonoBehaviour
     }
 
     private float time = 0f;
+
     void Update()
     {
         if (inputQuestion)
@@ -108,17 +116,30 @@ public class ChatGPTManager : MonoBehaviour
         {
             CalculationPoint();
             Debug.Log(Point);
+
+            //日記書いたら終わり
+            if (diaryuimanager.writeDone)
+            {
+                SceneManager.LoadScene("Mix");
+            }
+
             calculation = false;
+
+
         }
     }
 
     private void Set()
     {
         inputField = GameObject.Find("InputField (TMP)").GetComponent<TMP_InputField>();
+        diaryUIManager = GameObject.Find("DiaryUIManager");
+        diaryuimanager = diaryUIManager.GetComponent<DiaryUIManager>();
+
         inputQuestion = false;
         ableQuestion = true;
         firstQuestion = false;
         calculation = false;
+        finish = false;
     }
 
     public void CheckPositive()
@@ -132,6 +153,7 @@ public class ChatGPTManager : MonoBehaviour
                 //inputText.text = "";
                 //inputField.text = "";
                 inputQuestion = true;
+                finish = diaryuimanager.writeDone;
             }
         }
     }
