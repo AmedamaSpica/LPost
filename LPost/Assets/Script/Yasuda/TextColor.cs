@@ -8,27 +8,28 @@ public class TextColor : MonoBehaviour
     Vector2 nowPos = new Vector2();
     Vector2 lastPos = new Vector2();
 
-   public TextMeshProUGUI text;
+    public TextMeshProUGUI text;
 
     private float mycolor;
+
+    GameObject Pofin = new GameObject();
+    Mix mix;
 
     // Start is called before the first frame update
     void Start()
     {
+        Pofin = GameObject.Find("pofin");
+        mix = Pofin.GetComponent<Mix>();
+        mycolor = mix.textColor;
+
         text = this.GetComponent<TextMeshProUGUI>();
-        mycolor = 1.0f;
         //RectTransform_get.anchoredPosition = lastPos;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //RectTransform_get.anchoredPosition = nowPos;
-        if (mycolor > 0)
-        {
-            mycolor = mycolor - 0.01f;
-        }
-
-        text.color = new Color(0, 0, 0, mycolor);
+        mycolor = mix.textColor;
+        text.color = new Color(0.7f, 0.6f, 0.0f, mycolor);
     }
 }

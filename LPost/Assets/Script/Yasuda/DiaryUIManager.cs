@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 
+
 public class DiaryUIManager : MonoBehaviour
 {
     //0...Ex
@@ -23,7 +24,8 @@ public class DiaryUIManager : MonoBehaviour
     private int labelNumber;
     private bool firstText;
     private bool selectLabel;
-    private bool writeDone;
+
+    public bool writeDone { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +40,12 @@ public class DiaryUIManager : MonoBehaviour
         SetButton();
         SetImage();
 
-        Debug.Log(writeDone);
+        //Debug.Log(writeDone);
 
-        if(writeDone)
+        /*if(writeDone)
         {
             SceneManager.LoadScene("Mix");
-        }
+        }*/
     }
 
     private void Set()
