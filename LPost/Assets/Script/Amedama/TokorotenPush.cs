@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UIElements;
+
 
 public class TokorotenPush : MonoBehaviour
 {
@@ -10,14 +12,19 @@ public class TokorotenPush : MonoBehaviour
     [SerializeField] private GameObject MainCamera;
     [SerializeField] private AudioClip Sound;
     [SerializeField] private Animator CameraTransition;
+    [SerializeField] private Button BackButton;
 
     AudioSource AudioSource;
-    
+    readonly ChatGPTManager GPT = new();
+
     // Start is called before the first frame update
     void Start()
     {
-        CameraTransition = MainCamera.GetComponent<Animator>();
         
+        
+        CameraTransition = MainCamera.GetComponent<Animator>();
+        transform.localScale = new Vector3(0,GPT.Point, 0) ;
+
     }
 
     // Update is called once per frame
@@ -50,9 +57,7 @@ public class TokorotenPush : MonoBehaviour
             else 
             {
                 Destroy(gameObject);
-
-                Debug.Log("nu");
-               
+                BackButton.SetEnabled(true);
                 CameraTransition.SetBool("AllPushed", true);
 
             }
