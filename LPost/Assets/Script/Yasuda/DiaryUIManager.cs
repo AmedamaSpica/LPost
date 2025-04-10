@@ -66,7 +66,7 @@ public class DiaryUIManager : MonoBehaviour
         }
         else
         {
-            texts[0].text = "ラベルを選んでね！";
+            texts[0].text = "気持ちを選んでね！";
         }
 
         if(!selectLabel)
