@@ -31,8 +31,8 @@ public class CharactorTouch : MonoBehaviour
         LPower_minus = LPPoint.LPower;
         LPower_OneFlame_minus = (float)LPPoint.LPower / Slider_TimesOfCount;
         AudioSource = GameObject.Find("GameManager").GetComponent<AudioSource>();
-        LPower_Slider = GameObject.Find("PowerSlider").GetComponent<Slider>();
-        LPowerCount = GameObject.Find("PowerText").GetComponent<TextMeshProUGUI>();
+        //LPower_Slider = GameObject.Find("PowerSlider").GetComponent<Slider>();
+        //LPowerCount = GameObject.Find("PowerText").GetComponent<TextMeshProUGUI>();
        
     }
 

@@ -12,13 +12,12 @@ public class TextColor : MonoBehaviour
 
     private float mycolor;
 
-    GameObject Pofin = new GameObject();
     Mix mix;
 
     // Start is called before the first frame update
     void Start()
     {
-        Pofin = GameObject.Find("pofin");
+        GameObject Pofin = GameObject.Find("pofin");
         mix = Pofin.GetComponent<Mix>();
         mycolor = mix.textColor;
 

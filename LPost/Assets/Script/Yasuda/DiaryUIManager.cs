@@ -69,7 +69,16 @@ public class DiaryUIManager : MonoBehaviour
             texts[0].text = "ラベルを選んでね！";
         }
 
-        if(writeDone)
+        if(!selectLabel)
+        {
+            texts[2].text = "戻る";
+        }
+        else
+        {
+            texts[2].text = "選びなおす";
+        }
+
+        if (writeDone)
         {
             texts[0].text = "楽しそうだね！";
         }
@@ -94,7 +103,7 @@ public class DiaryUIManager : MonoBehaviour
             {
                 buttons[i].SetActive(true);
             }
-            buttons[0].SetActive(false);
+            buttons[0].SetActive(true);
 
             inputField.SetActive(false);
             texts[1].enabled = false;
@@ -147,6 +156,11 @@ public class DiaryUIManager : MonoBehaviour
 
     public void Back()
     {
+        if (!selectLabel)
+        {
+            SceneManager.LoadScene("Sample Scene");
+        }
+
         firstText = false;
         selectLabel = false;
         buttons[1].SetActive(true);
