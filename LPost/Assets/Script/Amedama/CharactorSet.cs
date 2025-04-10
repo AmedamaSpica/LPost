@@ -10,6 +10,8 @@ public class CharactorSet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject obj = GameObject.Find("DiaryBase");
+        Destroy(obj);
 
         CharacterSet_func();
     }
