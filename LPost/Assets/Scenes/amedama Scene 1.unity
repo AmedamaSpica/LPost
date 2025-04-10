@@ -546,6 +546,7 @@ MonoBehaviour:
   MainCamera: {fileID: 963194225}
   Sound: {fileID: 8300000, guid: b4f73aa520abe8741b1f27f13b250241, type: 3}
   CameraTransition: {fileID: 963194229}
+  BackButton: {fileID: 1686771578}
 --- !u!1 &437083444
 GameObject:
   m_ObjectHideFlags: 0
