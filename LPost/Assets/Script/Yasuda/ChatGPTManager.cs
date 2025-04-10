@@ -79,7 +79,7 @@ public class ChatGPTManager : MonoBehaviour
         content = ""
     };
 
-    private readonly string apiKey=APIKeyHolder.API_KEY;
+    private readonly string apiKey = APIKeyHolder.API_KEY;
 
     private List<MessageModel> communicationHistory = new();
 
@@ -183,6 +183,8 @@ public class ChatGPTManager : MonoBehaviour
         {
             Point = 30;
         }
+
+        GameManager.GMPoint = Point;
 
     }
 
